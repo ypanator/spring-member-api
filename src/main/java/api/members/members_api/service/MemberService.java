@@ -14,7 +14,7 @@ public class MemberService {
         throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
-    public Member update(Member member, String name) {
+    public Member update(Member member, int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
@@ -24,12 +24,12 @@ public class MemberService {
         throw new UnsupportedOperationException("Unimplemented method 'getAll'");
     }
 
-    public Member getByName(String name) {
+    public Member getById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getByName'");
+        throw new UnsupportedOperationException("Unimplemented method 'getById'");
     }
 
-    public void delete(String name) {
+    public void delete(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }

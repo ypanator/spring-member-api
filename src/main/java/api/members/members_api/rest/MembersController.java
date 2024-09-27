@@ -37,22 +37,21 @@ public class MembersController {
         return ResponseEntity.ok(members);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<Member> getByName(@PathVariable String name) {
-        Member member = memberService.getByName(name);
+    @GetMapping("/{id}")
+    public ResponseEntity<Member> getById(@PathVariable int id) {
+        Member member = memberService.getById(id);
         return ResponseEntity.ok(member);
     }
     
-
-    @PutMapping("/{name}")
-    public ResponseEntity<Member> update(@PathVariable String name, @RequestBody Member member) {
-        Member updatedMember = memberService.update(member, name);        
+    @PutMapping("/{id}")
+    public ResponseEntity<Member> update(@PathVariable int id, @RequestBody Member member) {
+        Member updatedMember = memberService.update(member, id);        
         return ResponseEntity.ok(updatedMember);
     }
     
-    @DeleteMapping("/{name}")
-    public ResponseEntity<Void> delete(@PathVariable String name) {
-        memberService.delete(name);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        memberService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

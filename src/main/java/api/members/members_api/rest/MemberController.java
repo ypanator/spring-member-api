@@ -26,9 +26,9 @@ public class MemberController {
     private final MemberService memberService;
     
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody Member member) {
-        memberService.save(member);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Integer> save(@RequestBody Member member) {
+        int id = memberService.save(member);
+        return ResponseEntity.ok(id);
     }
 
     @GetMapping

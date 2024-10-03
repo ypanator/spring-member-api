@@ -1,4 +1,4 @@
-package api.members.members_api.rest;
+package api.members.members_api.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

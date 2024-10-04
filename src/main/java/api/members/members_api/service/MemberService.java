@@ -1,11 +1,13 @@
 package api.members.members_api.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import api.members.members_api.entity.Member;
+import api.members.members_api.exception.MemberNotFoundException;
 import api.members.members_api.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +26,8 @@ public class MemberService {
     }
 
     public Member getById(int id) {
-        return memberRepository.findById(id).get();
+        return memberRepository.findById(id)
+            .orElseThrow(() -> new MemberNotFoundException("No Member with this id"));
     }
 
     @Transactional

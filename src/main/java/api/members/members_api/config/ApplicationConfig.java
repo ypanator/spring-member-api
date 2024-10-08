@@ -4,8 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.NoSuchElementException;
-
 import api.members.members_api.exception.UserNotFoundException;
 import api.members.members_api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -38,5 +39,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<ExceptionResponse> handleException(HttpRequestMethodNotSupportedException exc) {
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(new ExceptionResponse("Not supported Http method used", exc.getMessage()));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ExceptionResponse> handleException(MemberNotFoundException exc) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionResponse(exc.getMessage(), ""));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ExceptionResponse> handleException(UserNotFoundException exc) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionResponse(exc.getMessage(), ""));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ExceptionResponse> handleException(UserAlreadyRegisteredException exc) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionResponse(exc.getMessage(), ""));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ExceptionResponse> handleException(BadCredentialsException exc) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionResponse("Invalid credentials provided", exc.getMessage()));
     }
 }

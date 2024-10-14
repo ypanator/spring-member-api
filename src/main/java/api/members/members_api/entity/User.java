@@ -19,9 +19,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Singular;
 
-@Entity @Data
+@Entity @Data @Builder
 public class User implements UserDetails {
     
     @Id @JsonIgnore
@@ -34,6 +36,7 @@ public class User implements UserDetails {
     @NotBlank
     private String password;
 
+    @Singular
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;

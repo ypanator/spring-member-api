@@ -47,5 +47,10 @@ public class UserService {
 
         return JwtUtil.create(user);
     }
+
+    public User getUser(String username) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUser'");
+    }
     
 }

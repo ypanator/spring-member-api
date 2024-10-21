@@ -38,8 +38,7 @@ public class UserService {
     }
 
     public String authenticate(@Valid AuthRequest authRequest) {
-        User user = userRepository.findByUsername(authRequest.getUsername())
-            .orElseThrow(() -> new UserNotFoundException("User with provided username not found"));
+        User user = getUser(authRequest.getUsername());
         
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
             authRequest.getUsername(), authRequest.getPassword())
@@ -49,8 +48,8 @@ public class UserService {
     }
 
     public User getUser(String username) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUser'");
+        return userRepository.findByUsername(username)
+            .orElseThrow(() -> new UserNotFoundException("User with provided username not found"));
     }
     
 }

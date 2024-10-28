@@ -1,5 +1,7 @@
 package api.members.members_api.service;
 
+import java.util.HashMap;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,7 +36,7 @@ public class UserService {
 
         userRepository.save(user);
 
-        return JwtUtil.create(user);
+        return JwtUtil.create(user, new HashMap<>());
     }
 
     public String authenticate(@Valid AuthRequest authRequest) {
@@ -44,7 +46,7 @@ public class UserService {
             authRequest.getUsername(), authRequest.getPassword())
         );
 
-        return JwtUtil.create(user);
+        return JwtUtil.create(user, new HashMap<>());
     }
 
     public User getUser(String username) {
